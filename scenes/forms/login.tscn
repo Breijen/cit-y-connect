@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ccivgfbjw0l66"]
 
-[ext_resource type="Script" path="res://scenes/login.gd" id="1_qbio2"]
+[ext_resource type="Script" path="res://scenes/forms/login.gd" id="1_qbio2"]
 
 [node name="LoginScreen" type="Control" node_paths=PackedStringArray("UsernameInput", "PasswordInput")]
 layout_mode = 3

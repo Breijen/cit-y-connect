@@ -39,9 +39,6 @@ func _on_login_button_pressed() -> void:
 
 func _on_request_completed(result, response_code, headers, body):
 	if response_code == 200:
-		var json = JSON.new()
-		var response_data = json.parse(body.get_string_from_utf8())
-		token = str(response_data)
 		print("Login successful! Token: " + token)
 	else:
 		var json = JSON.new()
