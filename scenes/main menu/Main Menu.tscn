@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://e6ihpotbccvo"]
+
+[ext_resource type="Script" path="res://scenes/main menu/camera_controller.gd" id="1_efwn8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_af2v6"]
+
+[node name="MainMenu" type="Node3D"]
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Building" type="Node3D" parent="World"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Building"]
+mesh = SubResource("BoxMesh_af2v6")
+skeleton = NodePath("")
+
+[node name="PivotPoint" type="Node3D" parent="."]
+
+[node name="CameraController" type="Camera3D" parent="PivotPoint"]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 65.419, 85.2535, 57.8977)
+projection = 1
+fov = 72.4247
+size = 12.0
+script = ExtResource("1_efwn8")
+sensitivity = 0.1
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.614395, 0.788998, 0, -0.788998, 0.614395, 0, 10.6375, 6.01683)
