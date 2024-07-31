@@ -13,8 +13,10 @@
 
 [node name="Building" type="Node3D" parent="World"]
 script = ExtResource("1_s4xdy")
+api_url = null
 building_id = 1
 max_occupants = 1000
+currentOccupants = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Building"]
 mesh = SubResource("BoxMesh_af2v6")
