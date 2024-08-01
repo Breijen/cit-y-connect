@@ -1,0 +1,133 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccivgfbjw0l66"]
+
+[ext_resource type="Script" path="res://scenes/forms/login.gd" id="1_qbio2"]
+
+[node name="LoginScreen" type="Control" node_paths=PackedStringArray("UsernameInput", "PasswordInput")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qbio2")
+UsernameInput = NodePath("NinePatchRect/Username")
+PasswordInput = NodePath("NinePatchRect/Password")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -262.5
+offset_right = 200.0
+offset_bottom = 262.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -200.0
+offset_right = 100.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -108.5
+offset_right = 100.0
+offset_bottom = -85.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cit-Y Plaza"
+
+[node name="UsernameTitle" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -57.5
+offset_right = 100.0
+offset_bottom = -34.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Username"
+
+[node name="Username" type="LineEdit" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -30.5
+offset_right = 100.0
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PasswordTitle" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 16.5
+offset_right = 100.0
+offset_bottom = 39.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Password
+"
+
+[node name="Password" type="LineEdit" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 40.5
+offset_right = 100.0
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LoginButton" type="Button" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 101.5
+offset_right = 100.0
+offset_bottom = 132.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Login"
+
+[connection signal="pressed" from="NinePatchRect/LoginButton" to="." method="_on_login_button_pressed"]

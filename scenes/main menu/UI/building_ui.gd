@@ -19,5 +19,7 @@ func set_building_info(building_data: String):
 	if error == OK:
 		var data_received = json.data
 		
+		building_name_label.text = json.data["building_name"]
+		
 	
 	

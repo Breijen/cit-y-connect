@@ -5,8 +5,7 @@ var api_url := "http://localhost:8000/api/authenticate" # Adjust to your Laravel
 @export var UsernameInput: Node
 @export var PasswordInput: Node
 
-var token := ""
-var csrf_token := ""
+var websocket = WebSocketPeer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,25 +21,20 @@ func _on_login_button_pressed() -> void:
 		return
 
 	print("Both filled")
-
-	var http_request := HTTPRequest.new()
-	add_child(http_request)
-	http_request.request_completed.connect(_on_request_completed)
-
-	var headers = [
-		"Content-Type: application/json"
-	]
-	var body = JSON.new().stringify({"username": username, "password": password})
-
-	var request_error = http_request.request(api_url, headers, HTTPClient.METHOD_POST, body)
 	
-	if request_error != OK:
-		print("Failed to send request.")
+	var query_params = {"username": username, "password": password}
+	NetworkManager.make_post_request("/api/authenticate", query_params, Callable(self, "_on_request_completed"))
 
-func _on_request_completed(result, response_code, headers, body):
-	if response_code == 200:
-		print("Login successful! Token: " + token)
-	else:
-		var json = JSON.new()
-		var response_data = json.parse(body.get_string_from_utf8())
-		print("Login failed: " + str(response_code))
+func _on_request_completed(body: String):
+	
+	var json = JSON.new()
+	var error = json.parse(body)
+	
+	if error == OK:
+		var data_received = json.data
+		var user_id = json.data["user_id"]
+		var token = json.data["token"]
+		
+		NetworkManager.connect_to_websocket(token, get_physics_process_delta_time());
+		
+		print(token)
