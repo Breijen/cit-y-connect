@@ -166,7 +166,10 @@ func _build_query_string(params : Dictionary) -> String:
 
 func connect_to_websocket(token, delta: float) -> void:
 	# Attempt to connect to the WebSocket server
-	var url = "ws://localhost:8181/Echo"
+	var auth_token = token
+	
+	var url = "ws://localhost:8181/Echo?token=" + auth_token
+	
 	var err = websocket.connect_to_url(url)
 
 	if err != OK:
