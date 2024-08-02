@@ -9,7 +9,7 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	NetworkManager.connect("building_data_received", Callable(self, "_on_building_clicked_completed"))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -24,14 +24,15 @@ func _on_building_clicked(camera: Node, event: InputEvent, event_position: Vecto
 				print("Please enter a building ID.")
 				return
 				
-			var query_params = {"id": building_id}
-			NetworkManager.make_get_request("/api/building", query_params, Callable(self, "_on_building_clicked_completed"))
+			NetworkManager.request_building_data(building_id)
 
-func _on_building_clicked_completed(response_data):
-	if(response_data):
+func _on_building_clicked_completed(response_data: Dictionary):
+	if response_data:
 		_show_building_info_ui(response_data)
+	else:
+		print("No data received or error in data.")
 	
-func _show_building_info_ui(building_data):
+func _show_building_info_ui(building_data: Dictionary):
 	var building_info_instance = building_info_ui.instantiate()
 	building_info_instance.set_building_info(building_data)
 	add_child(building_info_instance)

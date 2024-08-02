@@ -10,7 +10,6 @@ var websocket = WebSocketPeer.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
-	
 
 func _on_login_button_pressed() -> void:
 	var username = UsernameInput.text
@@ -35,6 +34,6 @@ func _on_request_completed(body: String):
 		var user_id = json.data["user_id"]
 		var token = json.data["token"]
 		
-		NetworkManager.connect_to_websocket(token, get_physics_process_delta_time());
+		NetworkManager.connect_to_websocket(user_id, token);
 		
 		print(token)
