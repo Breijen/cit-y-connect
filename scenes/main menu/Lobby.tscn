@@ -1,13 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://e6ihpotbccvo"]
+[gd_scene load_steps=8 format=3 uid="uid://e6ihpotbccvo"]
 
 [ext_resource type="Script" path="res://scenes/main menu/camera_controller.gd" id="1_efwn8"]
-[ext_resource type="Script" path="res://scenes/main menu/apartment.gd" id="1_s4xdy"]
+[ext_resource type="Script" path="res://scenes/main menu/building.gd" id="1_s4xdy"]
+[ext_resource type="PackedScene" uid="uid://1gfropwtqfbn" path="res://Sky/GodotSky.tscn" id="3_kvuw1"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_af2v6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y3fqp"]
 
-[node name="MainMenu" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fy8jk"]
+albedo_color = Color(0.102412, 0.407707, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_h30y3"]
+
+[node name="Lobby" type="Node3D"]
 
 [node name="World" type="Node3D" parent="."]
 
@@ -25,6 +31,11 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Building/MeshInstance3D/Area3D"]
 shape = SubResource("BoxShape3D_y3fqp")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
+transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 1, 0, -100, -4.37114e-08, 0, -0.494057, 0)
+material_override = SubResource("StandardMaterial3D_fy8jk")
+mesh = SubResource("QuadMesh_h30y3")
+
 [node name="PivotPoint" type="Node3D" parent="."]
 
 [node name="CameraController" type="Camera3D" parent="PivotPoint"]
@@ -35,7 +46,24 @@ size = 12.0
 script = ExtResource("1_efwn8")
 sensitivity = 0.1
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.614395, 0.788998, 0, -0.788998, 0.614395, 0, 10.6375, 6.01683)
+[node name="GodotSky" parent="." instance=ExtResource("3_kvuw1")]
+timeOfDay = 1154.58
+rateOfTime = 0.93
+cloudType = "2D Dynamic"
+cloudCoverage = 0.207
+animateStarMap = false
+
+[node name="SunMoon" parent="GodotSky" index="0"]
+transform = Transform3D(1, 0, 0, 0, -0.992938, -0.118629, 0, 0.118629, -0.992938, 0, 0, 0)
+
+[node name="SunLight" parent="GodotSky/SunMoon/Sun" index="0"]
+light_color = Color(1, 1, 1, 1)
+light_energy = 0.593
+
+[node name="MoonLight" parent="GodotSky/SunMoon/Moon" index="0"]
+light_color = Color(0, 0, 0, 1)
+light_energy = 1.0
 
 [connection signal="input_event" from="World/Building/MeshInstance3D/Area3D" to="World/Building" method="_on_building_clicked"]
+
+[editable path="GodotSky"]

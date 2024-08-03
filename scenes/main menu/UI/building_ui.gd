@@ -18,10 +18,8 @@ func set_building_info(building_data: Dictionary):
 	print(building_data)
 	building_id = building_data["id"]
 	
-	if(building_data["user_apartment_id"]):
-		apartment_id = building_data["user_apartment_id"]
-	else:
-		apartment_id
+	if(building_data["user_apartment_id"] != null):
+		apartment_id = building_data["user_building_id"]
 	
 	building_name_label.text = building_data["building_name"]
 	max_occupants_label.text = str(building_data["current_occupants"]) + " out of " + str(building_data["max_occupants"]) + " occupants"
@@ -34,11 +32,12 @@ func set_building_info(building_data: Dictionary):
 		claim_button.disabled = false
 	else:
 		claim_button.text = "You already have an apartment"
-		claim_button.disabled = false
+		claim_button.disabled = true
 		
 		
 func _on_claim_button_pressed() -> void:
 	if(apartment_id == 0):
 		NetworkManager.create_apartment(building_id)
 		queue_free()
-		
+	elif(apartment_id == building_id):
+		get_tree().change_scene_to_file("res://scenes/Apartments/RoomController.tscn")

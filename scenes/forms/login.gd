@@ -37,3 +37,8 @@ func _on_request_completed(body: String):
 		NetworkManager.connect_to_websocket(user_id, token);
 		
 		print(token)
+		transition_to_lobby_scene()
+
+func transition_to_lobby_scene():
+	print("Transitioning to the lobby scene.")
+	get_tree().change_scene_to_file("res://scenes/main menu/Lobby.tscn")

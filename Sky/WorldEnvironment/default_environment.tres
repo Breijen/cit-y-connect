@@ -1,0 +1,48 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://wwq6f40kybqq"]
+
+[ext_resource type="Sky" uid="uid://bq7217qbtqsdc" path="res://Sky/WorldEnvironment/default_sky.tres" id="1_o86xx"]
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 0.93
+sky = ExtResource("1_o86xx")
+ambient_light_source = 3
+ambient_light_color = Color(0.00437684, 0.0062461, 0.0323231, 1)
+ambient_light_sky_contribution = 0.74
+ambient_light_energy = 2.54
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_exposure = 1.37
+tonemap_white = 0.48
+ssr_max_steps = 128
+ssil_radius = 0.38
+ssil_intensity = 0.0
+ssil_sharpness = 0.96
+ssil_normal_rejection = 0.39
+sdfgi_use_occlusion = true
+sdfgi_bounce_feedback = 0.25
+sdfgi_min_cell_size = 4.0
+sdfgi_cascade0_distance = 256.0
+sdfgi_max_distance = 4096.0
+sdfgi_y_scale = 2
+glow_normalized = true
+glow_intensity = 0.35
+fog_mode = 1
+fog_light_color = Color(0, 0.551167, 0.994197, 1)
+fog_light_energy = 0.02
+fog_density = 0.7436
+fog_aerial_perspective = 0.064
+fog_sky_affect = 0.577
+fog_depth_begin = 0.0
+fog_depth_end = 150.0
+volumetric_fog_enabled = true
+volumetric_fog_density = -0.014064
+volumetric_fog_albedo = Color(0.493162, 0.591552, 0.935684, 1)
+volumetric_fog_emission = Color(0.110482, 0.323388, 0.641141, 1)
+volumetric_fog_emission_energy = 10.0
+volumetric_fog_anisotropy = 0.0
+volumetric_fog_length = 30.0
+volumetric_fog_detail_spread = 1.72305
+volumetric_fog_ambient_inject = 1.4
+volumetric_fog_sky_affect = 0.1
+volumetric_fog_temporal_reprojection_enabled = false

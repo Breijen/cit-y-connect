@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Cit-Y Connect"
-run/main_scene="res://scenes/forms/login.tscn"
+run/main_scene="res://scenes/forms/Login.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -37,5 +37,7 @@ button_left={
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_2d=1
+anti_aliasing/quality/msaa_3d=1
+anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_taa=true

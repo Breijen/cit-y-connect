@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="SkyPreset" load_steps=13 format=3 uid="uid://c0ifqpv0e36pb"]
+
+[ext_resource type="Texture2D" uid="uid://b1tbkqimx4iet" path="res://Sky/Presets/alien/alien_baseCloudColor.tres" id="1_uaan6"]
+[ext_resource type="Texture2D" uid="uid://bh23k3qavhkgs" path="res://Sky/Presets/alien/alien_baseSkyColor.tres" id="2_5ptl1"]
+[ext_resource type="Texture2D" uid="uid://5w2qftxpu37u" path="res://Sky/Presets/alien/alien_horizonFogColor.tres" id="3_3yscv"]
+[ext_resource type="Texture2D" uid="uid://olcpo6r2vd1w" path="res://Sky/Presets/alien/alien_moonGlowColor.tres" id="4_y77f3"]
+[ext_resource type="Texture2D" uid="uid://j16cr0mc33qr" path="res://Sky/Presets/alien/alien_moonLight.tres" id="5_wyfxq"]
+[ext_resource type="Curve" uid="uid://dfwsgpngfonpr" path="res://Sky/Presets/default/moonLightIntensity.tres" id="6_ntyl7"]
+[ext_resource type="Texture2D" uid="uid://ldtmjeqburwu" path="res://Sky/Presets/default/overcastCloudColor.tres" id="7_n85lq"]
+[ext_resource type="Script" path="res://Sky/Presets/sky_presets.gd" id="8_513cx"]
+[ext_resource type="Texture2D" uid="uid://cssgcr5l78yas" path="res://Sky/Presets/alien/alien_sunDiscColor.tres" id="9_8hl45"]
+[ext_resource type="Texture2D" uid="uid://cql6exfjhd3eb" path="res://Sky/Presets/alien/alien_sunGlowColor.tres" id="10_adkss"]
+[ext_resource type="Texture2D" uid="uid://b6pfci202gt33" path="res://Sky/Presets/alien/alien_sunLight.tres" id="11_psmfp"]
+[ext_resource type="Curve" uid="uid://cbqp5kavktxj0" path="res://Sky/Presets/default/sunLightIntensity.tres" id="12_4alu6"]
+
+[resource]
+script = ExtResource("8_513cx")
+sunRadius = 0.00041
+sunEdgeBlur = 1500.0
+sunLightIntensity = ExtResource("12_4alu6")
+sunGlowIntensity = 0.27
+moonRadius = 0.0003
+moonEdgeBlur = 10000.0
+moonLightIntensity = ExtResource("6_ntyl7")
+moonGlowIntensity = 0.8
+horizonSize = 3.0
+horizonAlpha = 1.0
+cloudSpeed = 0.00054
+cloudDirection = Vector2(2, 2)
+cloudDensity = 8.0
+cloudGlow = 0.77
+cloudLightAbsorption = 5.0
+cloudBrightness = 0.798
+cloudUvCurvature = 0.565
+cloudEdge = 0.146
+anisotropy = 0.828
+starColor = Color(1, 1, 1, 1)
+starBrightness = 0.14
+starResolution = 2.0
+twinkleSpeed = 0.01
+twinkleScale = 0.5
+starSpeed = 0.0006
+baseSkyColor = ExtResource("2_5ptl1")
+baseCloudColor = ExtResource("1_uaan6")
+overcastCloudColor = ExtResource("7_n85lq")
+horizonFogColor = ExtResource("3_3yscv")
+sunLightColor = ExtResource("11_psmfp")
+sunDiscColor = ExtResource("9_8hl45")
+sunGlow = ExtResource("10_adkss")
+moonLightColor = ExtResource("5_wyfxq")
+moonGlowColor = ExtResource("4_y77f3")

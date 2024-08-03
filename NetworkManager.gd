@@ -13,6 +13,7 @@ var auth_token: String = ""
 var user_id: int
 
 signal building_data_received(data: Dictionary)
+signal user_apartment_data_received(data: Dictionary)
 
 func _ready():
 	connect_to_server(url)
@@ -112,10 +113,6 @@ func connect_to_websocket(id, token) -> void:
 	else:
 		print("Connecting to WebSocket server...")
 
-func transition_to_lobby_scene():
-	print("Transitioning to the lobby scene.")
-	get_tree().change_scene_to_file("res://scenes/main menu/Lobby.tscn")
-
 func handle_incoming_message(message: String):
 	var json = JSON.new()
 	var error = json.parse(message)
@@ -128,6 +125,8 @@ func handle_incoming_message(message: String):
 			
 		if data_received.has("type") and data_received["type"] == "building_data":
 			emit_signal("building_data_received", data_received["data"])
+		if data_received.has("type") and data_received["type"] == "user_apartment_data":
+			emit_signal("user_apartment_data_received", data_received["data"])
 		else:
 			print("Received unexpected message type or data format.")
 	else:
@@ -143,6 +142,18 @@ func request_building_data(building_id: int):
 		var message_json = JSON.stringify(message)
 		websocket.send_text(message_json)  # Send the request as a JSON string
 		print("Requested data for building ID: %d" % building_id)
+	else:
+		print("WebSocket is not open. Cannot send message.")
+		
+func request_apartment_data():
+	if websocket.get_ready_state() == WebSocketPeer.STATE_OPEN:
+		var message = {
+			"action": "getApartmentData",
+			"user_id": user_id,
+		}
+		var message_json = JSON.stringify(message)
+		websocket.send_text(message_json)  # Send the request as a JSON string
+		print("Requested apartment data for user: %d" % user_id)
 	else:
 		print("WebSocket is not open. Cannot send message.")
 		
@@ -173,7 +184,6 @@ func _process(_delta):
 				
 		if not connection_established:
 			connection_established = true
-			transition_to_lobby_scene()
 			
 	elif state == WebSocketPeer.STATE_CLOSING:
 		pass

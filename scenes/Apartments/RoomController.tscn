@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://r7n8kl24k1nt"]
+
+[ext_resource type="Script" path="res://scenes/Apartments/room_controller.gd" id="1_4nqli"]
+[ext_resource type="Script" path="res://scenes/main menu/camera_controller.gd" id="1_jiylp"]
+[ext_resource type="PackedScene" uid="uid://1gfropwtqfbn" path="res://Sky/GodotSky.tscn" id="3_otxur"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_es3cp"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mjuy2"]
+
+[node name="RoomManager" type="Node3D"]
+
+[node name="PivotPoint" type="Node3D" parent="."]
+
+[node name="CameraController" type="Camera3D" parent="PivotPoint"]
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866026, 0.5, -0.707107, -0.353553, 0.612372, 58, 45, 55)
+projection = 1
+fov = 62.4
+size = 12.0
+script = ExtResource("1_jiylp")
+sensitivity = 0.1
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.614395, 0.788998, 0, -0.788998, 0.614395, 0, 10.6375, 6.01683)
+
+[node name="RoomController" type="Node3D" parent="."]
+script = ExtResource("1_4nqli")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RoomController"]
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 30, 0, -1.80771, 0)
+material_override = SubResource("StandardMaterial3D_es3cp")
+mesh = SubResource("PlaneMesh_mjuy2")
+
+[node name="GodotSky" parent="." instance=ExtResource("3_otxur")]
+timeOfDay = 1154.58
+rateOfTime = 0.93
+cloudType = "2D Dynamic"
+cloudCoverage = 0.207
+animateStarMap = false
+
+[node name="SunMoon" parent="GodotSky" index="0"]
+transform = Transform3D(1, 0, 0, 0, -0.992938, -0.118629, 0, 0.118629, -0.992938, 0, 0, 0)
+
+[node name="SunLight" parent="GodotSky/SunMoon/Sun" index="0"]
+light_color = Color(1, 1, 1, 1)
+light_energy = 0.593
+
+[node name="MoonLight" parent="GodotSky/SunMoon/Moon" index="0"]
+light_color = Color(0, 0, 0, 1)
+light_energy = 1.0
+
+[editable path="GodotSky"]

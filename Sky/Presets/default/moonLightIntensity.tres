@@ -1,0 +1,6 @@
+[gd_resource type="Curve" format=3 uid="uid://dfwsgpngfonpr"]
+
+[resource]
+max_value = 270.48
+_data = [Vector2(0, 270.48), 0.0, 0.0, 0, 0, Vector2(0.0989761, 270.48), 0.0, 0.0, 0, 0, Vector2(0.293515, 270.48), 0.0, 0.0, 0, 0, Vector2(0.682594, 270.48), 0.0, 0.0, 0, 0, Vector2(1, 270.48), 0.0, 0.0, 0, 0]
+point_count = 5
